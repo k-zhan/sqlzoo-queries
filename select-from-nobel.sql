@@ -1,5 +1,3 @@
-
-
 -- Question 1
 -- Change the query shown so that it displays Nobel prizes for 1950
 
@@ -51,5 +49,52 @@ SELECT * FROM nobel
 -- Show the winners with first name John
 
 SELECT winner FROM nobel
-WHERE winner LIKE 'John%';
+WHERE winner LIKE 'John %';
 
+-- Question 8
+-- Show the year, subject, and name of Physics winners for 1980 together with the Chemistry winners for 1984
+
+SELECT yr,subject,winner FROM nobel
+WHERE (subject = 'Physics' AND yr = 1980) OR (subject= 'Chemistry' AND yr = 1984);
+
+-- Question 9
+-- Show the year, subject, and name of winners for 1980 excluding Chemistry and Medicine
+
+SELECT yr,subject,winner FROM nobel
+WHERE yr = 1980 AND subject NOT IN ('Chemistry','Medicine');
+
+-- Question 10
+/* Show year, subject, and name of people who won a 'Medicine' prize in an early year (before 1910, not including 1910) 
+   together with winners of a 'Literature' prize in a later year (after 2004, including 2004) 
+*/
+
+SELECT yr,subject,winner FROM nobel
+WHERE (subject = 'Medicine' AND yr < 1910) OR 
+(subject='Literature' AND yr >= 2004);
+
+-- Question 11
+-- Find all details of the prize won by PETER GRÜNBERG 
+
+SELECT * FROM nobel
+WHERE winner = 'PETER GRÜNBERG';
+
+-- Question 12
+-- Find all details of the prize won by EUGENE O'NEILL 
+
+SELECT * FROM nobel
+WHERE winner = 'EUGENE O''NEILL';
+
+-- Question 13
+-- List the winners, year and subject where the winner starts with Sir. Show the the most recent first, then by name order.
+
+SELECT winner,yr,subject FROM nobel
+WHERE winner LIKE 'Sir %' 
+ORDER BY yr DESC ,winner;
+
+-- Question 14
+-- Show the 1984 winners and subject ordered by subject and winner name; but list Chemistry and Physics last.
+
+SELECT winner, subject
+  FROM nobel
+ WHERE yr=1984
+ ORDER BY subject IN ('Physics','Chemistry') ASC, subject ,winner;
