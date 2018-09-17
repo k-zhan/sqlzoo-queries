@@ -25,7 +25,7 @@ WHERE name IN ('France', 'Germany','Italy');
 -- Question 6
 
 SELECT name FROM world
-WHERE name LIKE '%United%'
+WHERE name LIKE '%United%';
 
 
 -- Question 7
@@ -38,3 +38,14 @@ WHERE area > 3000000 OR population > 250000000;
 
 SELECT name,population,area FROM world
 WHERE (area > 3000000 AND population <= 250000000) OR (area <= 3000000 AND population > 250000000);
+
+
+-- Question 9
+
+SELECT name,ROUND(population/1000000,2), ROUND(GDP/1000000000,2) FROM world
+WHERE continent = 'South America';
+
+
+-- Question 10
+SELECT name,ROUND(GDP/population,-3) FROM world
+WHERE GDP >= 1000000000000;
