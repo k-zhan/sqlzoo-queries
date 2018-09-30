@@ -49,3 +49,12 @@ WHERE continent = 'South America';
 -- Question 10
 SELECT name,ROUND(GDP/population,-3) FROM world
 WHERE GDP >= 1000000000000;
+
+
+-- Question 11
+SELECT name,capital FROM world
+WHERE  LENGTH(name) = LENGTH(capital);
+
+--Question 12
+SELECT name, capital FROM world
+WHERE LEFT(name,1) = LEFT(capital,1) AND name <> capital
